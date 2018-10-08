@@ -1,4 +1,4 @@
-import { CHANGE_SEARCHFIELD } from '../constants';
+import { CHANGE_SEARCH_FIELD } from '../constants';
 
 export default function searchRobots(
   state = {
@@ -7,7 +7,7 @@ export default function searchRobots(
   action
 ) {
   switch (action.type) {
-    case CHANGE_SEARCHFIELD: {
+    case CHANGE_SEARCH_FIELD: {
       return {
         ...state,
         searchfield: action.payload,
@@ -17,3 +17,4 @@ export default function searchRobots(
       return state;
   }
 }
+
