@@ -10,7 +10,6 @@ import './App.css';
 class App extends Component {
   state = {
     robots: [],
-    searchfield: '',
   };
 
   componentDidMount() {
@@ -21,14 +20,11 @@ class App extends Component {
     });
   }
 
-  onSearchChange = (event) => {
-    this.setState({ searchfield: event.target.value });
-  };
-
   render() {
-    const { robots, searchfield } = this.state;
+    const { robots } = this.state;
+    const { searchField, onSearchChange } = this.props;
     const filteredRobots = robots.filter((robot) => {
-      return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+      return robot.name.toLowerCase().includes(searchField.toLowerCase());
     });
     if (!robots.length) {
       return <h1 className="main-title tc">Loading</h1>;
@@ -36,7 +32,7 @@ class App extends Component {
       return (
         <div className="tc">
           <h1 className="main-title">ROBOFRIENDS</h1>
-          <SearchBox searchChange={this.onSearchChange} />
+          <SearchBox searchChange={onSearchChange} />
           <Scroll>
             <ErrorBoundry>
               <CardList robots={filteredRobots} />
@@ -48,16 +44,16 @@ class App extends Component {
   }
 }
 
-
-
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
-    searchfield: state.searchRobots.searchfield,
+    searchField: state.searchField,
   };
-}
+};
 
-const mapDispatchToProps = {
-  onSearchChange,
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+  };
 };
 
 export default connect(

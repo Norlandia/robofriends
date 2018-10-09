@@ -2,7 +2,7 @@ import { CHANGE_SEARCH_FIELD } from '../constants';
 
 export default function searchRobots(
   state = {
-    searchfield: '',
+    searchField: '',
   },
   action
 ) {
@@ -10,11 +10,10 @@ export default function searchRobots(
     case CHANGE_SEARCH_FIELD: {
       return {
         ...state,
-        searchfield: action.payload,
+        searchField: action.payload,
       };
     }
     default:
       return state;
   }
 }
-
