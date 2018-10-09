@@ -44,14 +44,16 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     searchField: state.searchField,
   };
 };
 
-const mapDispatchToProps = {
-  setSearchField,
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+  };
 };
 
 export default connect(
