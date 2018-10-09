@@ -10,6 +10,10 @@
 .main-title {
   font-family: 'SEGA LOGO FONT';
   font-size: 4em;
-  color: #3CCDB0;
+  color: #3ccdb0;
   font-weight: 100;
+}
+
+.search {
+  border-style: solid;
 }
